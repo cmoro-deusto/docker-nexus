@@ -1,7 +1,12 @@
 FROM ubuntu:14.04
 MAINTAINER Usman Ismail <usman@techtraits.com>
 RUN apt-get -qq update
-RUN apt-get -qq install openjdk-7-jre-headless
+RUN apt-get install -y software-properties-common
+RUN \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer
 RUN apt-get -qq install wget
 RUN mkdir -p /opt/sonatype-nexus /opt/sonatype-work /opt/sonatype-work/nexus
 RUN ["wget", "-O", "/tmp/nexus-latest-bundle.tar.gz", "http://www.sonatype.org/downloads/nexus-latest-bundle.tar.gz"]
