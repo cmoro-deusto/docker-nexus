@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Usman Ismail <usman@techtraits.com>
+MAINTAINER Carlos Moro <cmoro@deusto.es>
 RUN apt-get -qq update
 RUN apt-get install -y software-properties-common
 RUN \
